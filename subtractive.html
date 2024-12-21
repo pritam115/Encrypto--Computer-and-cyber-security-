@@ -1,0 +1,158 @@
+<!-- previous additive -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypto - Subtractive Cipher Algorithm</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Nav Bar -->
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="index.html">Encrypto</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Algorithms
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="subtractive.html">Subtractive Algorithm</a>
+                            <a class="dropdown-item" href="division.html">Division Algorithm</a>
+                            <a class="dropdown-item" href="reverseAffine.html">Reverse Affine Algorithm</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <section>
+        <div class="wrapper">
+
+            <div class="contactForm">
+                <h2>Subtractive Cipher - Encryption</h2>
+                <div class="formBox">
+                    <div class="inputBox">
+                        <input type="text" name="" id="plainText" required>
+                        <span>Plain Text</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="number" name="" id="key" required>
+                        <span>Key</span>
+                    </div>
+                    <div class="inputBox">
+                        <textarea name="" id="cipherText" readonly></textarea>
+                        <span>Cipher Text</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="button" value="Encrypt" onclick="encrypt()">
+                    </div>
+                </div>
+            </div>
+
+            <div class="contactForm">
+                <h2>Subtractive Cipher - Decryption</h2>
+                <div class="formBox">
+                    <div class="inputBox">
+                        <input type="text" name="" id="inputCipherText" required>
+                        <span>Cipher Text</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="number" name="" id="inputKey" required>
+                        <span>Key</span>
+                    </div>
+                    <div class="inputBox">
+                        <textarea name="" id="decryptedText" readonly></textarea>
+                        <span>Plain Text</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="button" value="Decrypt" onclick="decrypt()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function encrypt() {
+            const plainText = document.getElementById('plainText').value.toUpperCase();
+            const key = parseInt(document.getElementById('key').value);
+            let cipherText = '';
+
+            for (let i = 0; i < plainText.length; i++) {
+                const charCode = plainText.charCodeAt(i);
+                if (charCode >= 65 && charCode <= 90) {
+                    const encryptedCharCode = (charCode - 65 - key + 26) % 26 + 65;
+                    cipherText += String.fromCharCode(encryptedCharCode);
+                } else {
+                    cipherText += plainText[i];
+                }
+            }
+
+            document.getElementById('cipherText').value = cipherText;
+        }
+
+        function decrypt() {
+            const cipherText = document.getElementById('inputCipherText').value.toUpperCase();
+            const key = parseInt(document.getElementById('key').value);
+            let decryptedText = '';
+
+            for (let i = 0; i < cipherText.length; i++) {
+                const charCode = cipherText.charCodeAt(i);
+                if (charCode >= 65 && charCode <= 90) {
+                    const decryptedCharCode = (charCode - 65 + key) % 26 + 65;
+                    decryptedText += String.fromCharCode(decryptedCharCode);
+                } else {
+                    decryptedText += cipherText[i];
+                }
+            }
+
+            document.getElementById('decryptedText').value = decryptedText;
+        }
+    </script>
+
+</body>
+
+</html>
