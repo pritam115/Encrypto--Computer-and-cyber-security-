@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  background: #121212;
+}
+
+.navbar {
+  padding: 0 !important;
+  padding-top: 15px !important;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding: 20px;
+}
+
+.wrapper {
+  max-width: 1200px;
+  background: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.contactForm {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 40px;
+  box-shadow: 2px 3px 4px white;
+}
+
+.contactForm h2 {
+  color: rgb(127, 196, 154);
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.inputBox {
+  margin-bottom: 20px;
+}
+
+.inputBox span {
+  display: block;
+  color: #a5a5a5;
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.inputBox input,
+.inputBox textarea {
+  width: 100%;
+  padding: 12px 30px;
+  font-size: 16px;
+  color: #f0f0f0;
+  background: #262626;
+  border: 2px solid #333;
+  border-radius: 5px;
+}
+
+.inputBox textarea {
+  height: 120px;
+  resize: none;
+}
+
+.inputBox input[type="button"] {
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.inputBox input[type="button"]:hover {
+  background: rgb(127, 196, 154);
+}
+
+.inputBox input[type="submit"] {
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.inputBox input[type="submit"]:hover {
+  background: rgb(127, 196, 154);
+}
